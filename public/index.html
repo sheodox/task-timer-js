@@ -23,8 +23,24 @@
 		<input type="submit" value="Start Working">
 	</form>
 
+	<form id="to-do-form">
+		<label for="to-do">What do you want to do?</label>
+		<input id="to-do">
+
+		<input type="submit" value="Add">
+
+		<button id="clear-button">Clear</button>
+
+
+		<p id="todo-list-preview"></p>
+	</form>
+
+	<p id="currentToDo"></p>
+
 	<p id="status"></p>
 	<progress id="status-progress" value="0" max="1"></progress>
+
+	<audio src="alarm.wav" id="alert-tone"></audio>
 
 	<script src="main.js"></script>
 </body>
