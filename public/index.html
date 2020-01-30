@@ -3,11 +3,26 @@
 <head>
 	<title>Task Timer</title>
 	<link href="style.css" rel="stylesheet" />
-	<script src="main.js"></script>
 </head>
 
 <body>
 	<h1>Task Timer</h1>
 	<p>This is a timer for you tasks.</p>
+
+	<form id="times-form">
+		<label for="work-duration">How long do you want to work?</label>
+		<input id="work-duration" value="25">
+
+		<br>
+
+		<label for="break-duration">How long do you want breaks to be?</label>
+		<input id="break-duration" value="5">
+
+		<br>
+
+		<input type="submit" value="Start Working">
+	</form>
+
+	<script src="main.js"></script>
 </body>
 </html>
