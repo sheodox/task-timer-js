@@ -28,14 +28,20 @@ function updatePreview() {
     query('#todo-list-preview').textContent = `Your to-do's: ${toDoArr.join(', ')}`;
 }
 
+function wait(ms) {
+	return () => {
+		return new Promise(resolve => {
+			setTimeout(resolve, ms);
+		})
+	}
+}
+
 function workOnATask() {
 	setToDo(toDoArr[currentToDo++]);
 	setMessage('Start working!');
 	showProgressForDuration(workTimeDuration);
 
-    const taskPromise = new Promise(resolve => {
-        setTimeout(resolve, workTimeDuration);
-    });
+    const taskPromise = wait(workTimeDuration)();
 
 	if (currentToDo < toDoArr.length){
 		return taskPromise.then(() => {
@@ -44,10 +50,8 @@ function workOnATask() {
 			setToDo('Enjoy your break');
 
 			showProgressForDuration(breakTimeDuration);
-			return new Promise(resolve => {
-				setTimeout(resolve, breakTimeDuration);
-			})
 		})
+			.then(wait(breakTimeDuration))
 			.then(workOnATask);
 	}
 	else {
