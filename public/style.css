@@ -1,5 +1,4 @@
 * {
-    font-family: "Source Code Pro", Monaco, monospace;
     box-sizing: border-box;
 }
 form {
@@ -7,4 +6,29 @@ form {
     padding: 10px;
     border: 3px solid gray;
     border-radius: 3px;
+}
+head {
+    text-align: center;
+}
+body {
+    background-color: #000000;
+    color: white;
+    font-family: "Arial", "Source Code Pro", Monaco, monospace;
+    line-height: 200%;
+}
+form {
+    background-color: #1c1c1c;
+    align-content: center;
+}
+
+#to-do-form {
+    line-height: 100%;
+    vertical-align: center;
+}
+
+button {
+    color: black;
+}
+button:hover {
+    color: blueviolet;
 }

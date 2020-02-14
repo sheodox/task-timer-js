@@ -29,38 +29,44 @@ function updatePreview() {
 }
 
 function wait(ms) {
-	return () => {
-		return new Promise(resolve => {
-			setTimeout(resolve, ms);
-		})
-	}
+    return new Promise(resolve => {
+        setTimeout(resolve, ms);
+    })
 }
 
-function workOnATask() {
-	setToDo(toDoArr[currentToDo++]);
-	setMessage('Start working!');
-	showProgressForDuration(workTimeDuration);
+async function workOnATask() {
+    setToDo(toDoArr[currentToDo++]);
+    setMessage('Start working!');
+    showProgressForDuration(workTimeDuration);
 
-    const taskPromise = wait(workTimeDuration)();
+    await wait(workTimeDuration);
+}
 
-	if (currentToDo < toDoArr.length){
-		return taskPromise.then(() => {
-			ringAlarm();
-			setMessage('Stop working!');
-			setToDo('Enjoy your break');
+async function workOnBreak() {
+    ringAlarm();
+    setMessage('Stop working!');
+    setToDo('Enjoy your break');
 
-			showProgressForDuration(breakTimeDuration);
-		})
-			.then(wait(breakTimeDuration))
-			.then(workOnATask);
-	}
-	else {
-		return taskPromise.then(() => {
-			ringAlarm();
-			setToDo("Nothing");
-			setMessage("Congratulations! You have finished your to-do's!");
-		});
-	}
+    showProgressForDuration(breakTimeDuration);
+    await wait(breakTimeDuration);
+}
+
+function endTimer() {
+    ringAlarm();
+    setToDo("Nothing");
+    setMessage("Congratulations! You have finished your to-do's!");
+}
+
+async function doWork() {
+    await workOnATask();
+
+    if (currentToDo < toDoArr.length) {
+        await workOnBreak();
+        doWork();
+    }
+    else {
+        endTimer();
+    }
 }
 
 function ringAlarm() {
@@ -106,5 +112,6 @@ document
         workTimeDuration = parseInt(query('#work-duration').value, 10) * 1000;
         breakTimeDuration = parseInt(query('#break-duration').value, 10) * 1000;
         currentToDo = 0;
-        workOnATask();
+
+        doWork();
     });
