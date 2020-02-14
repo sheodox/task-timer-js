@@ -6,42 +6,44 @@
 </head>
 
 <body>
-	<h1>Task Timer</h1>
-	<p>This is a timer for you tasks.</p>
+	<main>
+		<h1>Task Timer</h1>
+		<p>This is a timer for you tasks.</p>
 
-	<form id="times-form">
-		<label for="work-duration">How long do you want to work?</label>
-		<input id="work-duration" value="25">
+		<form id="times-form">
+			<label for="work-duration">How long do you want to work?</label>
+			<input id="work-duration" value="25">
 
-		<br>
+			<br>
 
-		<label for="break-duration">How long do you want breaks to be?</label>
-		<input id="break-duration" value="5">
+			<label for="break-duration">How long do you want breaks to be?</label>
+			<input id="break-duration" value="5">
 
-		<br>
+			<br>
 
-		<input type="submit" value="Start Working">
-	</form>
+			<input type="submit" value="Start Working">
+		</form>
 
-	<form id="to-do-form">
-		<label for="to-do">What do you want to do?</label>
-		<input id="to-do">
+		<form id="to-do-form">
+			<label for="to-do">What do you want to do?</label>
+			<input id="to-do">
 
-		<input type="submit" value="Add">
+			<input type="submit" value="Add">
 
-		<button id="clear-button">Clear</button>
+			<button id="clear-button">Clear</button>
 
 
-		<p id="todo-list-preview"></p>
-	</form>
+			<p id="todo-list-preview"></p>
+		</form>
 
-	<p id="currentToDo"></p>
+		<p id="currentToDo"></p>
 
-	<p id="status"></p>
-	<progress id="status-progress" value="0" max="1"></progress>
+		<p id="status"></p>
+		<progress id="status-progress" value="0" max="1"></progress>
 
-	<audio src="alarm.wav" id="alert-tone"></audio>
+		<audio src="alarm.wav" id="alert-tone"></audio>
 
-	<script src="main.js"></script>
+		<script src="main.js"></script>
+	</main>
 </body>
 </html>

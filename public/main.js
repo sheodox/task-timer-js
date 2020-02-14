@@ -53,8 +53,25 @@ async function workOnBreak() {
 
 function endTimer() {
     ringAlarm();
-    setToDo("Nothing");
-    setMessage("Congratulations! You have finished your to-do's!");
+    const mainElements = document.querySelectorAll('main *');
+
+    mainElements.forEach((element) => {
+        element.style.display='none';
+    });
+    //<iframe width="1903" height="775" src="https://www.youtube.com/embed/1Bix44C1EzY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    const iframe = document.createElement("iframe");
+    const reload = document.createElement('button');
+    const main = query('main');
+    main.appendChild(iframe);
+    main.appendChild(reload);
+    iframe.setAttribute('allow', 'autoplay');
+    iframe.src="https://www.youtube.com/embed/1Bix44C1EzY";
+    iframe.style.width='1280px';
+    iframe.style.height='720px';
+    reload.textContent='Reload';
+    reload.addEventListener("click", () => {
+        location.reload();
+    })
 }
 
 async function doWork() {
